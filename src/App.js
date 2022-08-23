@@ -58,7 +58,11 @@ function App() {
     courses.map((course) => {
       return <Card course={course} key={course.id}></Card>;
     });
-  return <>{getCourses()}</>;
+  return (
+    <>
+      <div className={'courses-container'}>{getCourses()}</div>
+    </>
+  );
 }
 
 export default App;
