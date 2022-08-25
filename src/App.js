@@ -9,7 +9,7 @@ function App() {
       image: "https://img-c.udemycdn.com/course/240x135/394676_ce3d_5.jpg",
       price: "E£679.99",
       reviews: 2982,
-      rating: 4.4,
+      rating: 5,
       instructor: "Avinash Jain, The Codex",
     },
     {
@@ -30,7 +30,7 @@ function App() {
       image: "https://img-c.udemycdn.com/course/240x135/405878_e5a0_3.jpg",
       price: "E£679.99",
       reviews: 1798,
-      rating: 4.4,
+      rating: 4,
       instructor: "Edwin Diaz, Coding Faculty Solutions",
     },
     {
@@ -40,7 +40,7 @@ function App() {
       image: "https://img-c.udemycdn.com/course/240x135/426570_1b91_3.jpg",
       price: "E£319.99",
       reviews: 2774,
-      rating: 4.3,
+      rating: 3.4,
       instructor: "Abrar Hussain",
     },
     {
@@ -50,7 +50,7 @@ function App() {
       image: "https://img-c.udemycdn.com/course/240x135/31535_e351_7.jpg",
       price: "E£519.99",
       reviews: 1623,
-      rating: 4.5,
+      rating: 2.7,
       instructor: "Infinite Skills",
     },
   ];
