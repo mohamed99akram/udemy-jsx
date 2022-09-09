@@ -16,10 +16,6 @@
     font-size: small;
     color: #6a6f73;
 }
-.rating{
-    color: orange;
-    font-size: large;
-}
 .course a{
     text-decoration: none;
 }
@@ -29,6 +25,3 @@
 .course a:visited{
     color: black;
 }
-.checked , .fa-star-half-o{
-    color: orange;
-  }

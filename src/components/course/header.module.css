@@ -1,0 +1,33 @@
+.header{
+    background-color: #1c1d1f;
+    color: white;
+    padding:40px;
+}
+.header h1{
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+.header a{
+    color: #cec0fc;
+}
+.content{
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 55rem;
+    margin-left: 4.8rem;
+    margin-right: 4.8rem;
+    padding: 20px 0;
+}
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 1.6rem;
+}
+.details>*{
+    padding: 0 10px;
+}
