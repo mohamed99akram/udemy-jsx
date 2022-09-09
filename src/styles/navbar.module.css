@@ -1,0 +1,147 @@
+/* ******* TOP BAR  ***** */
+.topbar{
+    /* position: fixed;
+    max-height: 20px; */
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+    height: 100%;
+    padding:10px;
+}
+.topbarlink{
+    text-decoration: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    padding: 5px;
+    text-align: center;
+}
+.helpingLink{
+    margin: 0 20px;
+}
+.topIcon{
+    margin-left: auto;
+}
+.iconRight{
+    padding: 0 10px;
+}
+.topbarlink:visited{
+    color: black;
+}
+.topbarlink:hover{
+    color: magenta;
+    border-radius: 5px;
+}
+
+.searchbar{
+    border: none;
+    height: 30px;
+    /* width: 500px; */
+    width: 70%;
+    max-width: 500px;
+    /* font: 200; */
+    /* padding-left: 40px; */
+}
+
+.searchbar:focus{
+    border: none;
+    outline-width: 0;
+}
+.searchform{
+    flex-grow: 2;
+    border: 1px solid black;
+    border-radius:20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 20px;
+    /* min-height: 50px; */
+    flex-direction: row-reverse;
+}
+.submitbutton{
+    background-color: rgba(1, 1, 1, 0);
+    border: 0px;
+}
+.searchicon{
+    width: 50%;
+}
+.navbar{
+    background-color: white;
+    transform: translateY(-1000%);
+    position: absolute;
+    padding: 10px 30px;
+    border: 1px solid rgba(169, 169, 169, 50%);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 8%);
+}
+.navbarul{
+    list-style-type: none;
+    padding-left: 0;
+}
+.navbarul > a{
+    text-decoration: none;
+}
+.navlink{
+    padding:15px;
+}
+.navContainer:hover .navbar {
+    transform: translateY(0); /* when parent is hovered */
+}
+
+.userImg{
+    color: white;
+    background-color: #1c1d1f;
+    width: 3rem;
+    min-width: 20px;
+    min-height: 20px;
+    height: 3rem;
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin:10px 10px;
+}
+.categoriesTiles{
+    /* transform: translateY(-1000);  */
+    background-color: white;
+    border: none;
+}
+@media screen and (min-width: 800px){
+    .categoriesTiles{
+        display: none;
+    }
+}
+@media screen and (max-width: 800px) {
+    .courses-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .teach, .learning, .searchform, .heart, .bell, .account, .categories{
+        display: none;
+    }
+    .udemy{
+        order: 1;
+        margin: auto;
+
+    }
+    .topIcon{
+        order: 2;
+    }
+    .categories-tile 
+    {
+        display: block;
+        margin-left: 20px;
+        /* transform: translateY(0);  */
+    }
+    .nav-container:focus .navbar {
+        transform: translateY(0); 
+    }
+    .navbar{
+        height: 100%;
+    }
+
+} 
