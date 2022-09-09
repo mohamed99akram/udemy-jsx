@@ -2,54 +2,29 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import { Routes, Route } from "react-router-dom";
 import CoursePage from "./components/CoursePage";
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import NoMatchPage from "./components/NoMatchPage";
 // import { DataProvider } from "./contexts/userContexts";
-let usingJsonServer = true;
 const initialVal = {
   data: null,
   review: null,
   summary: null,
 };
 function App() {
-  const dataRef = useRef(initialVal);
-  // const [dataRef, setDataRef] = useState(initialVal);
+  // const dataRef = useRef(initialVal);
+  const [dataRef, setDataRef] = useState(initialVal);
   useEffect(() => {
-    if (usingJsonServer) {
-      fetch("http://localhost:7000/data")
+      fetch("http://localhost:7000/db")
         .then((response) => response.json())
         .then((json) => {
-          dataRef.current.data = json;
-          // setDataRef((oldDataRef) => {
-          //   return { ...oldDataRef, data: json };
-          // });
+          // dataRef.current.data = json;
+          // setDataRef({ current: { ...dataRef, data: json } })
+          console.log(json)
+          setDataRef((oldDataRef) => {
+            return { current: json };
+          });
         });
-      fetch("http://localhost:7000/summary")
-        .then((response) => response.json())
-        .then((json) => {
-          dataRef.current.summary = json;
-          // setDataRef((oldDataRef) => {
-          //   return { ...oldDataRef, summary: json };
-          // });
-        });
-      fetch("http://localhost:7000/review")
-        .then((response) => response.json())
-        .then((json) => {
-          dataRef.current.review = json;
-          // setDataRef((oldDataRef) => {
-          //   return { ...oldDataRef, review: json };
-          // });
-        });
-    } else {
-      fetch("http://localhost:3000/")
-        .then((response) => response.json())
-        .then((json) => {
-          dataRef.data = json.data;
-          dataRef.summary = json.summary;
-          dataRef.review = json.review;
-        });
-    }
   }, []);
   return (
     <>
@@ -62,7 +37,7 @@ function App() {
       > */}
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage database={dataRef} />} />
         <Route
           path="/courses/:courseId"
           element={<CoursePage database={dataRef} />}
