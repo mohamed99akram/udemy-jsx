@@ -8,6 +8,7 @@ import CourseContent from "./course/CourseContent";
 import Header from "./course/Header";
 import Instructors from "./course/Instructors";
 import ReqsDesc from "./course/ReqsDesc";
+import Reviews from "./course/Reviews";
 
 function CoursePage({ database }) {
   // let database = useContext(DataContext)
@@ -21,6 +22,7 @@ function CoursePage({ database }) {
       <ReqsDesc />
       <Instructors />
       <Feedback />
+      <Reviews/>
       <div>CoursePage {courseId}</div>
     </>
   );
