@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./courseContent.module.css";
 import Section from "./Section";
-function CourseContent() {
+function CourseContent({course}) {
   return (
     <>
       <div className={styles.container}>
@@ -9,14 +9,14 @@ function CourseContent() {
           <h2>Course content</h2>
         </div>
         <p style={{ margin: "0px" }}>
-          <span>15 sections</span>
-          <span>• 146 lectures </span>
-          <span> • 14h 42m total length</span>
+          <span>{course?.data?.sections?.length??0} sections</span>
+          <span>• {course?.data?.num_of_published_lectures} lectures </span>
+          <span> • {course?.data?.estimated_content_length_text} hours total length</span>
         </p>
         <div>
           {/* List of Sections */}
-          {[1, 2, 3, 4, 5, 6, 7, 8].map((item, index) => (
-            <Section key={index} />
+          {course?.data?.sections?.map((item, index) => (
+            <Section key={index} section={item}/>
           ))}
         </div>
       </div>

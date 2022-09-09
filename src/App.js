@@ -20,7 +20,6 @@ function App() {
         .then((json) => {
           // dataRef.current.data = json;
           // setDataRef({ current: { ...dataRef, data: json } })
-          console.log(json)
           setDataRef((oldDataRef) => {
             return { current: json };
           });

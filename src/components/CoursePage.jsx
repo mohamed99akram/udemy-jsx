@@ -15,15 +15,12 @@ function CoursePage({ database }) {
 
   const { courseId } = useParams();
 
-  console.log("database", database);
-
-  let curriculumContext = database?.current?.data?.find(
-    (course) => course.id === Number(courseId)
-  )?.curriculum_context;
-
+  let course_data = database?.current?.data?.find(
+    (course) => course.id === (courseId)
+  );
   let courseData = {
-    data: curriculumContext?.data,
-    details: curriculumContext?.details,
+    data: course_data?.curriculum_context?.data,
+    details: course_data?.details,
   };
   let courseSummary = database?.current?.summary
     ?.find((category) => {
@@ -41,7 +38,7 @@ function CoursePage({ database }) {
   return (
     <>
       <Header course={courseSummary} />
-      <CourseContent />
+      <CourseContent course={courseData}/>
       <ReqsDesc />
       <Instructors />
       <Feedback />

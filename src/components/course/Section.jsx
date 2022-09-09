@@ -5,18 +5,18 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import styles from "./section.module.css";
-function Lesson() {
+function Lesson({lesson}) {
   return (
     <>
       <PlayCircleFilledIcon sx={{ margin: "0 15px" }} />
-      <h4 style={{ margin: "0" }}>Lesson 1</h4>
+      <h4 style={{ margin: "0" }}>{lesson?.title}</h4>
       <span style={{ flex: "1 1 0%" }}></span>
-      <span style={{ margin: "0 15px" }}>1h 30m</span>
+      <span style={{ margin: "0 15px" }}>{lesson?.content_summary}</span>
     </>
   );
 }
 
-function Section() {
+function Section({ section }) {
   const [expanded, setExpanded] = useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
@@ -36,17 +36,20 @@ function Section() {
           id="panel1bh-header"
         >
           <Typography sx={{ width: "80%", flexShrink: 0 }}>
-            <span style={{ margin: "0", fontWeight:"bold", fontSize:"15px" }}> Up and Running With Python</span>
+            <span style={{ margin: "0", fontWeight: "bold", fontSize: "15px" }}>
+              {" "}
+              {section?.title}
+            </span>
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            {2 + " Lectures • " + 6 + " min"}
+            {section?.lecture_count+ " Lectures • " + section?.content_length_text+ " min"}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           {/* List of Lessons */}
-          {[1, 2, 3, 4].map((item, index) => (
+          {section?.items?.map((item, index) => (
             <li className={styles.lesson} key={index}>
-              <Lesson style={{ margin: "0 10px" }} />
+              <Lesson style={{ margin: "0 10px" }} lesson={item}/>
             </li>
           ))}
         </AccordionDetails>
