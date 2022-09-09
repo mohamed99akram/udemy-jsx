@@ -5,9 +5,9 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import CourseContent from "./course/CourseContent";
 import Header from "./course/Header";
+import Instructors from "./course/Instructors";
 import ReqsDesc from "./course/ReqsDesc";
 
- 
 function CoursePage({ database }) {
   // let database = useContext(DataContext)
 
@@ -17,7 +17,8 @@ function CoursePage({ database }) {
     <>
       <Header />
       <CourseContent />
-      <ReqsDesc/>
+      <ReqsDesc />
+      <Instructors />
       <div>CoursePage {courseId}</div>
     </>
   );
