@@ -13,7 +13,10 @@ function Header() {
             topics like Python GUI, Python Data Analysis, and more!
           </h3>
           <div className={styles.details}>
-            <Rating rating={3.5} />
+            <span>
+                <span className="rating">{3.5??4.5}</span>
+                <Rating rating={3.5} />
+            </span>
             <Link to={"#rating"}>({3234} ratings)</Link>
             <span>{19560} students</span>
           </div>

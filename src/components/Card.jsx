@@ -11,6 +11,8 @@ function Card({ course }) {
           {course?.instructor ?? "Jeff Bezos"}
         </span>
         <div>
+          
+         <span className="rating">{course?.rating??4.5}</span>
           <Rating rating={course.rating} />
         </div>
         <h3>{course?.price ?? "Free"}</h3>

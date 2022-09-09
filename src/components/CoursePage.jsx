@@ -1,4 +1,5 @@
 import React from "react";
+import Feedback from "./course/Feedback";
 // import { useContext } from 'react';
 // import { DataContext } from '../contexts/userContexts';
 
@@ -19,6 +20,7 @@ function CoursePage({ database }) {
       <CourseContent />
       <ReqsDesc />
       <Instructors />
+      <Feedback />
       <div>CoursePage {courseId}</div>
     </>
   );

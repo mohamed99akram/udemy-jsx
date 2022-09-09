@@ -47,11 +47,11 @@ a{
   color: black;
 }
 .checked , .fa-star-half-o{
-  color: orange;
+  color:  #e59819;
 }
 
 .rating{
-  color: orange;
+  color: #b4690e;
   font-size: large;
 }
 
