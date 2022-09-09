@@ -5,10 +5,10 @@ import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import PlayCircleFilledIcon from "@mui/icons-material/PlayCircleFilled";
 import Expandable from "../common/Expandable";
-function Instructor() {
+function Instructor({tag}) {
   return (
     <>
-      <div>
+      <div id={tag}>
         <button
           style={{
             backgroundColor: "inherit",
@@ -60,7 +60,7 @@ function Instructors() {
       <div className={styles.container}>
         <h2>Instructors</h2>
         {[1, 2].map((item, index) => {
-          return <Instructor key={index} />;
+          return <Instructor key={index} tag={"instructor"+index}/>;
         })}
       </div>
     </>

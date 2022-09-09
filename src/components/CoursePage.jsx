@@ -14,15 +14,38 @@ function CoursePage({ database }) {
   // let database = useContext(DataContext)
 
   const { courseId } = useParams();
+
   console.log("database", database);
+
+  let curriculumContext = database?.current?.data?.find(
+    (course) => course.id === Number(courseId)
+  )?.curriculum_context;
+
+  let courseData = {
+    data: curriculumContext?.data,
+    details: curriculumContext?.details,
+  };
+  let courseSummary = database?.current?.summary
+    ?.find((category) => {
+      // find the category that contains the course then find the course
+      return category.items.find((course) => {
+        return course.id === Number(courseId);
+      });
+    })
+    ?.items?.find((course) => course.id === Number(courseId));
+
+  let courseReviews = database?.current?.reviews?.find(
+    (course) => course.id === Number(courseId)
+  );
+
   return (
     <>
-      <Header />
+      <Header course={courseSummary} />
       <CourseContent />
       <ReqsDesc />
       <Instructors />
       <Feedback />
-      <Reviews/>
+      <Reviews />
       <div>CoursePage {courseId}</div>
     </>
   );
