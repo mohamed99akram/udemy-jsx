@@ -31,19 +31,18 @@ function CoursePage({ database }) {
     })
     ?.items?.find((course) => course.id === Number(courseId));
 
-  let courseReviews = database?.current?.reviews?.find(
-    (course) => course.id === Number(courseId)
+  let courseReviews = database?.current?.review?.find(
+    (course) => course.id === (courseId)
   );
 
   return (
     <>
       <Header course={courseSummary} />
-      <CourseContent course={courseData}/>
-      <ReqsDesc />
-      <Instructors />
-      <Feedback />
-      <Reviews />
-      <div>CoursePage {courseId}</div>
+      <CourseContent course={courseData?.data}/>
+      <ReqsDesc details={courseData?.details}/>
+      <Instructors instructors={courseSummary?.visible_instructors}/>
+      <Feedback course={courseReviews}/>
+      <Reviews reviews={courseReviews?.results}/>
     </>
   );
 }

@@ -22,7 +22,12 @@ function Section({ section }) {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
+  let hours = new Date(section?.content_length * 1000).getUTCHours();
+  let minutes = new Date(section?.content_length  * 1000).getUTCMinutes();
+  let seconds = new Date(section?.content_length  * 1000).getUTCSeconds();
+  if(seconds>0){
+    minutes+=1;
+  }
   return (
     <>
       <Accordion
@@ -42,7 +47,7 @@ function Section({ section }) {
             </span>
           </Typography>
           <Typography sx={{ color: "text.secondary" }}>
-            {section?.lecture_count+ " Lectures • " + section?.content_length_text+ " min"}
+            {section?.lecture_count+ " Lectures • " + ((hours>0?hours+"h ":"") + (minutes<1?"1m":minutes+"m"))}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>

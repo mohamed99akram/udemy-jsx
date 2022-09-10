@@ -4,12 +4,12 @@ import styles from "./feedback.module.css";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
 
-function ProgressBar({ rating = 43, stars = 5 }) {
+function ProgressBar({ percentage = 43, stars = 5 }) {
   let RightSide = () => {
     return (
       <span style={{ width: "100px"}}>
         <Rating rating={stars} />
-        <span>{rating + "%"}</span>
+        <span>{percentage + "%"}</span>
       </span>
     );
   };
@@ -17,7 +17,7 @@ function ProgressBar({ rating = 43, stars = 5 }) {
   return (
     <div style={{ display: "flex", flexDirection: "row", padding: "4px 30px" }}>
       <Progress
-        percent={rating}
+        percent={percentage}
         status="success"
         theme={{
           success: {
@@ -32,25 +32,29 @@ function ProgressBar({ rating = 43, stars = 5 }) {
   );
 }
 
-function Feedback() {
+function Feedback({course}) {
+  let rating = course?.averageRating?.toFixed(1);
+  let totalRatings = course?.ratingDistribution?.reduce((acc, curr) => { 
+    return acc + curr.count;
+  }, 0);
   return (
     <>
       <div className={styles.container}>
         <h2>Students Feedback</h2>
         <div className={styles.feedback}>
           <div className={styles.feedbackLeft}>
-            <div className={styles.bigRating}>4.4</div>
+            <div className={styles.bigRating}>{rating}</div>
             <div style={{ fontSize: "17px", marginBottom: "10px" }}>
-              <Rating rating={4.4} />
+              <Rating rating={rating} />
             </div>
             <div className={styles.courseRating}>Course Rating</div>
           </div>
           <div style={{ width: "100%" }}>
-            {[43, 37, 15, 3, 2].map((rating, index) => {
+            {course?.ratingDistribution?.map((item, index) => {
               return (
-                <ProgressBar rating={rating} key={index} stars={5 - index} />
+                <ProgressBar percentage={Math.round(item?.count / totalRatings * 100)} key={index} stars={index + 1} />
               );
-            })}
+            }).reverse()}
           </div>
         </div>
       </div>
