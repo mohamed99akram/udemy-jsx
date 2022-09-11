@@ -1,4 +1,5 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 
 import Card from "./Card";
 
@@ -6,18 +7,61 @@ let getCourses = (courses) =>
   courses.map((course) => {
     return <Card course={course} key={course.id}></Card>;
   });
-function HomePage({database}) {
-  let python = database?.current?.summary?.find((item) => item.title === "Python");
-  // console.log( python?.header);
+function HomePage({ database }) {
+  let categoriesNames = [
+    "Python",
+    "Excel",
+    "Web Development",
+    "JavaScript",
+    "Data Science",
+    "AWS Certification",
+    "Drawing",
+  ];
+  let categories = categoriesNames.map((category) => {
+    let categoryData = database?.current?.summary?.find(
+      (item) => item.title === category
+    );
+    return categoryData;
+  });
+
+  const searchParams = useSearchParams()[0];
+  const searchQuery = searchParams.get("q");
+  let searchCourses = [];
+  if (searchQuery) {
+    categories.forEach((category) => {
+      let results =
+        category?.items?.filter((item) => item?.title?.toLowerCase().includes(searchQuery?.toLocaleLowerCase())) ??
+        [];
+      searchCourses.push(...results);
+    });
+  }
   return (
-    <div className="courses-border">
-      <div className="useless">
-        <h2>{python?.header}</h2>
-        <p>{ python?.description}</p>
-        <button className="exploreButton">Explore {"Python"}</button>
-      </div>
-      <div className="courses-container">{getCourses(python?.items??[])}</div>
-    </div>
+    <>
+      {searchQuery ? (
+        <div className="courses-border">
+          <div className="courses-container">
+            {getCourses(searchCourses ?? [])}
+          </div>
+        </div>
+      ) : (
+        categories.map((category, index) => {
+          return (
+            <div className="courses-border" key={category?.id ?? index}>
+              <div className="useless">
+                <h2>{category?.header}</h2>
+                <p>{category?.description}</p>
+                <button className="exploreButton">
+                  Explore {category?.title}
+                </button>
+              </div>
+              <div className="courses-container">
+                {getCourses(category?.items ?? [])}
+              </div>
+            </div>
+          );
+        })
+      )}
+    </>
   );
 }
 

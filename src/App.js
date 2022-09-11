@@ -15,15 +15,15 @@ function App() {
   // const dataRef = useRef(initialVal);
   const [dataRef, setDataRef] = useState(initialVal);
   useEffect(() => {
-      fetch("http://localhost:7000/db")
-        .then((response) => response.json())
-        .then((json) => {
-          // dataRef.current.data = json;
-          // setDataRef({ current: { ...dataRef, data: json } })
-          setDataRef((oldDataRef) => {
-            return { current: json };
-          });
+    fetch("http://localhost:7000/db")
+      .then((response) => response.json())
+      .then((json) => {
+        // dataRef.current.data = json;
+        // setDataRef({ current: { ...dataRef, data: json } })
+        setDataRef((oldDataRef) => {
+          return { current: json };
         });
+      });
   }, []);
   return (
     <>
@@ -34,9 +34,12 @@ function App() {
           review: dataRef.review,
         }}
       > */}
-      <NavBar />
+      <NavBar/>
       <Routes>
-        <Route path="/" element={<HomePage database={dataRef} />} />
+        <Route
+          path="/"
+          element={<HomePage database={dataRef} />}
+        />
         <Route
           path="/courses/:courseId"
           element={<CoursePage database={dataRef} />}
