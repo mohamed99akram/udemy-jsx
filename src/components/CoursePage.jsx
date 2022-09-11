@@ -9,6 +9,7 @@ import Header from "./course/Header";
 import Instructors from "./course/Instructors";
 import ReqsDesc from "./course/ReqsDesc";
 import Reviews from "./course/Reviews";
+import FloatingCard from "./course/FloatingCard";
 
 function CoursePage({ database }) {
   // let database = useContext(DataContext)
@@ -37,6 +38,7 @@ function CoursePage({ database }) {
 
   return (
     <>
+      <FloatingCard/>
       <Header course={courseSummary} />
       <CourseContent course={courseData?.data}/>
       <ReqsDesc details={courseData?.details}/>

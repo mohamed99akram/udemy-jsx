@@ -40,7 +40,7 @@ function HomePage({ database }) {
       {searchQuery ? (
         <div className="courses-border">
           <div className="courses-container">
-            {getCourses(searchCourses ?? [])}
+            {searchCourses?.length>0?getCourses(searchCourses ?? []):<h1>{"No Results Found"}</h1>}
           </div>
         </div>
       ) : (
