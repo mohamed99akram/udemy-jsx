@@ -5,6 +5,7 @@ import CoursePage from "./components/CoursePage";
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import NoMatchPage from "./components/NoMatchPage";
+import Footer from "./components/Footer";
 // import { DataProvider } from "./contexts/userContexts";
 const initialVal = {
   data: null,
@@ -46,6 +47,7 @@ function App() {
         />
         <Route path="*" element={<NoMatchPage />} />
       </Routes>
+      <Footer/>
       {/* </DataProvider> */}
     </>
   );

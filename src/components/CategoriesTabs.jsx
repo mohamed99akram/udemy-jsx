@@ -19,7 +19,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Typography component={'span'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -55,13 +55,13 @@ export default function CategoriesTabs({ categories }) {
           aria-label="basic tabs example"
         >
           {categories.map((category, index) => {
-            return <Tab label={category?.title} {...a11yProps(index)} />;
+            return <Tab label={category?.title} {...a11yProps(index)} key={index}/>;
           })}
         </Tabs>
       </Box>
       {categories.map((category, index) => {
         return (
-          <TabPanel value={value} index={index}>
+          <TabPanel  value={value} index={index} key={index}>
             <TabContent category={category} key={category?.id ?? index} />
           </TabPanel>
         );
