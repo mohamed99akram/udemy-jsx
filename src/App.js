@@ -15,7 +15,7 @@ function App() {
   // const dataRef = useRef(initialVal);
   const [dataRef, setDataRef] = useState(initialVal);
   useEffect(() => {
-    fetch("http://localhost:7000/db")
+    fetch("https://raw.githubusercontent.com/mohamed99akram/udemy-jsx/phase2/dp.json")
       .then((response) => response.json())
       .then((json) => {
         // dataRef.current.data = json;
