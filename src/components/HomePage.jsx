@@ -2,6 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 
 import Card from "./Card";
+import CategoriesTabs from "./CategoriesTabs";
 
 let getCourses = (courses) =>
   courses.map((course) => {
@@ -30,8 +31,9 @@ function HomePage({ database }) {
   if (searchQuery) {
     categories.forEach((category) => {
       let results =
-        category?.items?.filter((item) => item?.title?.toLowerCase().includes(searchQuery?.toLocaleLowerCase())) ??
-        [];
+        category?.items?.filter((item) =>
+          item?.title?.toLowerCase().includes(searchQuery?.toLocaleLowerCase())
+        ) ?? [];
       searchCourses.push(...results);
     });
   }
@@ -40,26 +42,17 @@ function HomePage({ database }) {
       {searchQuery ? (
         <div className="courses-border">
           <div className="courses-container">
-            {searchCourses?.length>0?getCourses(searchCourses ?? []):<h1>{"No Results Found"}</h1>}
+            {searchCourses?.length > 0 ? (
+              getCourses(searchCourses ?? [])
+            ) : (
+              <h1>{"No Results Found"}</h1>
+            )}
           </div>
         </div>
       ) : (
-        categories.map((category, index) => {
-          return (
-            <div className="courses-border" key={category?.id ?? index}>
-              <div className="useless">
-                <h2>{category?.header}</h2>
-                <p>{category?.description}</p>
-                <button className="exploreButton">
-                  Explore {category?.title}
-                </button>
-              </div>
-              <div className="courses-container">
-                {getCourses(category?.items ?? [])}
-              </div>
-            </div>
-          );
-        })
+        <div className="courses-border">
+          <CategoriesTabs categories={categories} />
+        </div>
       )}
     </>
   );
