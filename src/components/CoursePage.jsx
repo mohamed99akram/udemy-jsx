@@ -38,7 +38,7 @@ function CoursePage({ database }) {
 
   return (
     <>
-      <FloatingCard/>
+      <FloatingCard course={courseSummary}/>
       <Header course={courseSummary} />
       <CourseContent course={courseData?.data}/>
       <ReqsDesc details={courseData?.details}/>
