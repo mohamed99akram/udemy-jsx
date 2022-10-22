@@ -46,6 +46,14 @@ a{
 .course a:visited{
   color: black;
 }
+.checked , .fa-star-half-o{
+  color:  #e59819;
+}
+
+.rating{
+  color: #b4690e;
+  font-size: large;
+}
 
 @media screen and (max-width:600px){
   .useless{

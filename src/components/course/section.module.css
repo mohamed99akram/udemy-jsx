@@ -1,0 +1,11 @@
+.lesson{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    letter-spacing: normal;
+    white-space: normal;
+    list-style: none;
+    padding:10px;
+}
